@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f33dba25-b080-479f-bcf3-27ed69ff2cdf" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ZWgkW6C5rjxsBcTCwkoXSUacgV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/CoronavirusApp/transmission" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\python\CoronavirusApp\CoronavirusApp\transmission" />
+      <recent name="E:\python\CoronavirusApp\CoronavirusApp\symptoms" />
+      <recent name="E:\python\CoronavirusApp\CoronavirusApp\incubation" />
+      <recent name="E:\python\CoronavirusApp\CoronavirusApp\MainApp\static\flags" />
+      <recent name="E:\python\CoronavirusApp\CoronavirusApp\MainApp\templates\main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\python\CoronavirusApp\CoronavirusApp\MainApp\static\images" />
+      <recent name="E:\python\CoronavirusApp\CoronavirusApp\MainApp\static" />
+      <recent name="E:\python\CoronavirusApp\CoronavirusApp\MainApp\static\js" />
+      <recent name="E:\python\CoronavirusApp\CoronavirusApp" />
+      <recent name="E:\python\CoronavirusApp\CoronavirusApp\MainApp\templates\main" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f33dba25-b080-479f-bcf3-27ed69ff2cdf" name="Default Changelist" comment="" />
+      <created>1584960407491</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584960407491</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="804" y="119" key="FileChooserDialogImpl" timestamp="1587204821669">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="804" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587204821669" />
+    <state x="184" y="6" key="SettingsEditor" timestamp="1584960730132">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1584960730132" />
+    <state x="724" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1587799463363">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="724" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1587799463363" />
+    <state x="6" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1587197390273">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="6" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1587197390273" />
+  </component>
+</project>

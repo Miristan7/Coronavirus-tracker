@@ -1,0 +1,410 @@
+{% extends "main/wrapper.html"%}
+{% block content %}
+{% load static %}
+<style>
+    .medcards:hover {
+       -webkit-transform: scale(1.2);
+       -ms-transform: scale(1.2);
+        transform: scale(1.2);
+     }
+
+    #about{
+       width: auto;
+       justify-content: center;
+       position: relative;
+    }
+    .numbers {
+    font-family: Iceland,monospace;
+    #font-size: 10rem;
+    }
+</style>
+
+
+
+
+<div class="container-fluid">
+<h3 class="text-center text-muted" >Пандемия коронавирусной инфекции COVID-19</h3><!<br><br>
+
+    <div class="col-md-12">
+        <div class="row">
+
+            <div class="col-md-5">
+                <div class="text-center" style="margin-top:15px">
+                    <h1>Подтвержденные случаи:</h1>
+                    <div class="numbers">
+                        <h1><span style="color:#aaa">{{infoGlob.totConf}}</span></h1>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top:15px">
+                    <h1>Смерти:</h1>
+                    <div class="numbers text-danger" >
+                        <H1><span>{{infoGlob.totDeaths}}</span></H1>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top:15px">
+                    <h1>Выздоровевшие:</h1>
+                    <div class="numbers" style="color:#8ACA2B ">
+                        <h1><span>{{infoGlob.totRec}}</span></h1>
+                    </div>
+                </div>
+                <br><br>
+            </div>
+
+
+            <div class="col-md-7">
+
+                <div class="row text-center" id="about">
+                    <div class="col-md-12">
+                        <div style="color:black; font-size: 1.5rem;">
+                            <p>Полезная информация</p>
+                            <hr style="border:0.1rem solid rgb(212, 212, 212);; width:25%">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-4 medcards">
+                                <div style="width: 100px; margin:5%; margin-left: auto; margin-right: auto; display: block">
+                                    <img data-src="https://trackcorona-images.s3.amazonaws.com/svg/doctor.svg" alt="doctor" class=" lazyloaded" src="https://trackcorona-images.s3.amazonaws.com/svg/doctor.svg">
+                                </div>
+                                <br>
+                                <a style="font-size: 1.5rem;">Инкубационный период</a>
+                                <p style=" margin-left: 2%; margin-right: 2%;">
+                                    Узнайте о инкубационном периоде Covid-19.
+                                </p>
+                                <a href="/incubation-period">Узнать</a>
+                            </div>
+
+                            <div class="col-md-4 medcards">
+                                <div style="width: 100px; margin:5%; margin-left: auto; margin-right: auto; display: block">
+                                    <img class="symptoms-svg" src="https://trackcorona-images.s3.amazonaws.com/svg/lung.svg" alt="Shortness of Breath"  id="dyspnea">
+                                </div>
+                                <br>
+                                <a style="font-size: 1.5rem;">Симптомы коронавируса</a>
+                                <p style="margin-left: 2%; margin-right: 2%;">
+                                    Проинформируйтесь о всех симптомах новой болезни.
+                                </p>
+                                <a href="/symptoms">Посмотреть</a>
+                            </div>
+
+
+                            <div class="col-md-4 medcards">
+                                <div style="width: 100px; margin:5%; margin-left: auto; margin-right: auto; display: block">
+                                    <img data-src="https://trackcorona-images.s3.amazonaws.com/svg/world.svg" alt="world" class=" ls-is-cached lazyloaded" src="https://trackcorona-images.s3.amazonaws.com/svg/world.svg">
+                                </div>
+                                <br>
+                                <a style="font-size: 1.5rem;">Распространение болезни</a>
+                                <p style="margin-left: 2%; margin-right: 2%;">
+                                    Информация о всех путях передачи короновируса.
+                                </p>
+                                <a href="/transmission">Перейти </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <br><br><br>
+
+
+    <!-- таблица с странами-->
+    <div class="container-fluid mt-2">
+        <div id="toolbar">
+          <h3>Случаи заболевания</h3>
+        </div>
+        <table
+            id="table"
+            data-toolbar="#toolbar"
+            data-search="true"
+            data-show-toggle="true"
+            data-show-columns="true"
+            data-show-columns-toggle-all="true"
+            data-show-export="true"
+            data-sort-name="totalcases"
+            data-sort-order="desc"
+            data-show-pagination-switch="true"
+            data-pagination="false"
+            data-page-list="[10, 25, 50, 100, all]"
+            data-show-footer="true">
+        </table>
+    </div>
+      <br><br><br>
+
+
+
+
+    <!--
+     интерактивная карта (подтвержденные случаи)
+    <div class="container">
+        <h3> Подтвержденные случаи </h3>
+        <div class="cases">
+            <div class="map"></div>
+            <div class="areaLegend"></div>
+            <div class="plotLegend"></div>
+        </div>
+    </div>
+    -->
+
+    <!-- чарты стран -->
+    <div class="container-fluid my-3">
+        <div class="row">
+            <div class="col-4 mr-auto form-group">
+                <select id="country" class="form-control"></select>
+            </div>
+        </div>
+        <div class="card card-body">
+            <canvas id="myChart" style="width:100%; height:500px;"></canvas>
+        </div>
+    </div>
+
+
+
+    <!-- стандартные bootstrap скрипты -->
+    <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+
+    <!-- скрипты для таблицы-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table-locale-all.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
+
+    <!-- скрипты для карты
+    <script src="https://cdn.jsdelivr.net/npm/raphael@2.3.0/raphael.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-mousewheel@3.1.13/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.mapael.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/world_countries.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/dataset.js' %}"></script>
+    -->
+
+    <!-- скрипты дл чарта -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+
+    <!--  код таблицы -->
+    <script>
+        axios.get('https://api.covid19api.com/summary').then(function (response) {
+            var rawData = myData(response.data.Countries);
+
+            myTable(rawData);
+        }).catch(function (error) {
+            console.log(error);
+        })
+
+        function myData(data) {
+            var list = [];
+            data.forEach(function(item) {
+
+                list.push({
+
+                    country: item.Country,
+                    newcases: item.NewConfirmed,
+                    totalcases: item.TotalConfirmed,
+                    newdeaths: item.NewDeaths,
+                    totaldeaths: item.TotalDeaths,
+                    newrecoveries: item.NewRecovered,
+                    totalrecoveries: item.TotalRecovered,
+                    lastupdate: new Date(item.Date).getDate()+'/'+new Date(item.Date).getMonth()+'/'+new Date(item.Date).getFullYear() //.toLocaleString()
+                });
+            });
+
+            return list;
+        }
+
+        function myTable(arr) {
+            var myTable = $('#table').bootstrapTable({
+                height: 600,
+                locale: 'ru-RU',
+                columns: [
+                    [
+                        {field:'country', title:'Страны', rowspan:2, align:'left', valign:'middle', footerFormatter:countFormatter},
+                        {title:'Подтвержденные случаи', colspan:2, align:'center', valign:'middle'},
+                        {title:'Умерло', colspan:2, align:'center', valign:'middle'},
+                        {title:'Выздоровело', colspan:2, align:'center', valign:'middle'},
+                        {field:'lastupdate', title:'Дата', rowspan:2, align:'center', valign:'middle'}
+                    ],
+                    [
+                        {field:'newcases', title:'Новые случаи',sortable:true, align:'right', formatter:numberFormatter, footerFormatter:totalFormatter},
+                        {field:'totalcases', title:'Всего случаев',sortable:true, align:'right', formatter:numberFormatter, footerFormatter:totalFormatter},
+                        {field:'newdeaths', title:'Новые смерти', sortable:true, align:'right', formatter:numberFormatter, footerFormatter:totalFormatter},
+                        {field:'totaldeaths', title:'Всего смертей', sortable:true, align:'right', formatter:numberFormatter, footerFormatter:totalFormatter},
+                        {field:'newrecoveries', title:'Новые вылеченные', sortable:true, align:'right', formatter:numberFormatter, footerFormatter:totalFormatter},
+                        {field:'totalrecoveries', title:'Всего вылеченных', sortable:true, align:'right', formatter:numberFormatter, footerFormatter: totalFormatter}
+                    ]
+                ],
+                data: arr
+            });
+            return myTable;
+        }
+
+        function countFormatter(data) {
+            return data.length
+        }
+
+        function numberFormatter(value, row){
+            return value.toLocaleString('ru-RU');
+        }
+
+        function totalFormatter(data) {
+            var field = this.field
+            var total = data.map(function (row) {
+                return row[field]
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0);
+            return total.toLocaleString('ru-RU');
+        }
+    </script>
+    <!--  здесь заканчивается скрипт для таблицы-->
+
+
+
+    <!-- скрипты для карты
+    <script>
+        $(".cases").mapael({
+            map: {
+                name : "world_countries",
+			    defaultArea: {
+				    attrs : {
+					    stroke : "#fff",
+					    "stroke-width" : 1
+				    }
+			    }
+            },
+		    legend: {
+			    area: {
+				    display : true,
+				    title :"Territory of total confirmed cases as of 1 April 2020",
+				    slices : caseLegendAreaColors
+			    }
+
+		    },
+		    areas: caseCountryAreas
+        });
+    </script>
+    здесь заканчивается скрипт для карты-->
+
+
+
+    <!-- скрипты для чарта -->
+ <script>
+        var covidstatus = [
+            {title: 'Число погибших', slug: 'deaths', backgroundColor: '#ffcf9f', borderColor: '#ff9f40'},
+            {title: 'Излеченные', slug: 'recovered', backgroundColor: '#a4dfdf', borderColor: '#4bc0c0'},
+            {title: 'Подтвержденные инфекцированные', slug: 'confirmed', backgroundColor: '#ffb0c1', borderColor: '#ff6384'}
+        ];
+
+        $('#country').html('<option disabled selected>-- Выберите страну --</option>');
+        axios.get('https://api.covid19api.com/countries').then(function(res) {
+            res.data.forEach(function(row) {
+                $('#country').append('<option value="'+row.Slug+'">'+row.Country+'</option>');
+            });
+        });
+
+        var store = localStorage;
+        var getStore = store.getItem('myCountry') ? store.getItem('myCountry') : 'kyrgyzstan';
+
+        var mychart = myChart();
+        countryData(getStore, covidstatus, mychart);
+
+        $('#country').on('change', function() {
+            store.setItem('myCountry', $(this).val());
+            window.location.reload();
+        });
+
+        function countryData(country, status, chart) {
+            getLabelData(chart);
+            status.forEach(function(item, index) {
+                getCountryData(item.slug, country, chart, index);
+            });
+        }
+
+        function getLabelData(chart) {
+            axios.get('https://api.covid19api.com/total/country/kyrgyzstan/status/confirmed').then(function(response) {
+                chart.data.labels = formatData(response.data, 'label');
+                chart.update();
+            })
+        }
+
+        function getCountryData(status, country, chart, index) {
+            axios.get('https://api.covid19api.com/total/country/'+country+'/status/'+status).then(function(response) {
+                chart.data.datasets[index].data = formatData(response.data, 'data');
+                chart.update();
+            }).catch(function(error) {
+                console.log(error);
+            });
+        }
+
+        function formatData(data, type) {
+            var list = [];
+            data.forEach(function(item) {
+                if(type == 'data') {
+                    list.push(item.Cases);
+                } else if(type == 'label') {
+                    list.push(new Date(item.Date).getDate());
+                }
+            });
+            return list.slice(data.length - 34, data.length);
+        }
+
+        function myChart() {
+            var myBasicChart = new Chart('myChart', {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: dataSets(covidstatus)
+                },
+                options: {
+			        responsive: true,
+			        title: {
+				        display: true,
+				        text: 'COVID-19 ДИАГРАММА СТРАН МИРА'
+			        },
+				    tooltips: {
+					    mode: 'index',
+					    intersect: false,
+				    },
+				    hover: {
+					    mode: 'nearest',
+					    intersect: true
+				    },
+                    scales: {
+                        xAxes: [{
+					        display: true,
+				        }],
+				        yAxes: [{
+					        display: true,
+				        }]
+                    }
+                }
+            });
+            return myBasicChart;
+        }
+
+        function dataSets(data) {
+            var sets = [];
+            data.forEach(function(item) {
+                sets.push({
+                    label: item.title,
+                    data: [],
+                    backgroundColor: item.backgroundColor,
+                    borderColor: item.borderColor,
+                    borderWidth: 3,
+                    fill: true
+                });
+            });
+            return sets;
+        }
+    </script>
+</div>
+
+
+{% endblock %}

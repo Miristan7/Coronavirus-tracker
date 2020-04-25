@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Коронавирус Live</title>
+    <meta name="viewport" content="widht=device-widht, initial-scale=1">
+    {% load static %}
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+    <!--для таблицы и карты -->
+    <link href="https://unpkg.com/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" rel="stylesheet">
+    <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
+     <!--для чарта -->
+    <link href="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+
+</head>
+<body>
+
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+
+      <h5 class="navbar-brand my-0 mr-md-auto" >Коронавирус Live</h5>
+
+      <nav class="my-2 my-md-0 mr-md-3">
+          <a class="p-2 text-dark" href="/">Главная</a>
+          <a class="p-2 text-dark" href="/about">О сайте</a>
+          <a class="p-2 text-dark" href="/contact">Контакты</a>
+          <a class="p-2 text-dark" href="/faq">FAQ</a>
+       </nav>
+
+  </div>
+  {% block content %}
+
+
+
+
+
+
+
+
+  {% endblock %}
+
+
+<footer class="page-footer font-small cyan darken-3">
+    <hr>
+  <div class="container">
+      <div class="footer-copyright text-center py-3"> <b> © 2020 Коронавирус Live. Все права защищены.</b> </div>
+  </div>
+</footer>
+
+</body>
+</html>

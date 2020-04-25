@@ -1,0 +1,85 @@
+{% extends "main/wrapper.html"%}
+{% block content %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+{% load static %}
+<style>
+    input, textarea {
+    width: 100%;
+    height: 100px;
+    padding: 5px!important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(169,169,169)
+}
+input {
+    height: 30px;
+}
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="content-inner">
+                <ul class="breadcrumb">
+                   <li><a href="/">Главная страница </a> </li>
+                   <li class="active">  \  Контакты</li>
+                </ul>
+
+                <div class="section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="billing-details">
+                                    <div class="section-title">
+                                        <h3 class="title">Контактная форма</h3>
+                                    </div>
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    <div class="alert alert-{{message.tags}}" role="alert">
+                                        {{message}}
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+
+
+                                    <form action="" method="post" novalidate>
+
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+
+                                        <input type="submit" value="Отправить">
+
+                                    </form>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6" >
+                                <div class="shiping-methods">
+                                    <div class="section-title">
+                                        <h4 class="title">Контактная информация</h4>
+                                    </div>
+                                    Адрес: г.Бишкек ул.Чуй 123 <br>
+                                    Телефон: +966(709)-02-09-04 <br>
+                                    E-mail: coronaviruslive.kg@mail.ru <br>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-4 adright"></div>
+    </div>
+</div>
+
+{% endblock %}
